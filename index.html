@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calendario</title>
+    <style type="text/css">
+        body {
+            color: white;
+            background-color: black;
+        }
+
+        table {
+            border: 3px solid black;
+            border-radius: 5px;
+            width: 700px;
+            height: 300px;
+            text-align: center;
+           
+        }
+
+        h1 {
+            text-align: center;
+            width: 100%;
+            height: 50px;
+            size: 20px;
+        }
+
+        td {
+            text-align: center;
+            border-radius: 5px;
+            border: 2px solid white;
+            color: white;
+            width: 100px;
+            height: 40px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .dom {
+            text-align: center;
+            border-radius: 5px;
+            border: 2px solid white;
+            color: white;
+            background-color: red;
+            width: 100px;
+            height: 40px;
+            font-weight: bold;
+        }
+
+        .Sem {
+            text-align: center;
+            border-radius: 5px;
+            border: 2px solid white;
+            width: 100px;
+            height: 50px;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .Sdom {
+            text-align: center;
+            border-radius: 5px;
+            border: 2px solid white;
+            color: white;
+            background-color: red;
+            width: 100px;
+            height: 50px;
+            font-weight: bold;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <script language="javascript">
+        var data, ano, mes, semana, d, dias, fundo, letra;
+        var diasDoMes = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        ano = parseInt(window.prompt("Qual ano?"));
+        mes = parseInt(window.prompt("Qual mes?"));
+
+        data = new Date();
+        data.setDate(1);
+        data.setMonth(mes - 1);
+        data.setFullYear(ano);
+        dias = data.getDay();
+        semana = dias + 1;
+        if (ano % 4 == 0) {
+            diasDoMes[1] = 29;
+        }
+
+        document.write("<center>");
+        switch (data.getMonth()) {
+            case 0: document.write("<h1>Janeiro de " + ano + "</h1>"); break;
+            case 1: document.write("<h1>Fevereiro de " + ano + "</h1>"); break;
+            case 2: document.write("<h1>Março de " + ano + "</h1>"); break;
+            case 3: document.write("<h1>Abril de " + ano + "</h1>"); break;
+            case 4: document.write("<h1>Maio de " + ano + "</h1>"); break;
+            case 5: document.write("<h1>Junho de " + ano + "</h1>"); break;
+            case 6: document.write("<h1>Julho de " + ano + "</h1>"); break;
+            case 7: document.write("<h1>Agosto de " + ano + "</h1>"); break;
+            case 8: document.write("<h1>Setembro de " + ano + "</h1>"); break;
+            case 9: document.write("<h1>Outubro de " + ano + "</h1>"); break;
+            case 10: document.write("<h1>Novembro de " + ano + "</h1>"); break;
+            case 11: document.write("<h1>Dezembro de " + ano + "</h1>"); break;
+        }
+        document.write("<table>");
+        document.write("<tr>");
+        document.write("<td  class='dom'>Dom</td>");
+        document.write("<td >Seg</td>");
+        document.write("<td >Ter</td>");
+        document.write("<td >Qua</td>");
+        document.write("<td >Qui</td>");
+        document.write("<td >Sex</td>");
+        document.write("<td>Sab</td>");
+        document.write("</tr>");
+
+        document.write("<tr>");
+        for (d = 1; d < semana; d++) {
+            document.write("<td></td>");
+        }
+        for (d = 1; d <= diasDoMes[mes - 1]; d++) {
+
+            if (semana == 1) {
+                document.write("<td class='Sdom'>" + d);
+            }
+            else {
+                document.write("<td class='Sem'>" + d);
+            }
+            if (semana == 7) {
+                semana = 1;
+                document.write("</td></tr>");
+            }
+
+            else {
+                semana++;
+            }
+        }
+
+        document.write("</table>");
+        document.write("</center>");
+
+    </script>
+</body>
+
+</html>
